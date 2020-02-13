@@ -116,7 +116,7 @@ elseif (${UNIX})
 
     pkg_check_modules(REDIS QUIET hiredis)
     if (NOT DEFINED ${REDIS_INCLUDE_DIRS})
-        pkg_check_modules(REDIS REQUIRED libhiredis)
+        pkg_check_modules(REDIS REQUIRED hiredis)
     endif()
 
     if (NOT DEFINED LIBCLANG_LIBRARIES OR NOT DEFINED LIBCLANG_CXXFLAGS OR NOT DEFINED LIBCLANG_LIBDIR)
@@ -159,7 +159,7 @@ elseif (${WIN32})
     execute_process(COMMAND "${SC_MACHINE_THIRDPARTY_PATH}/nuget.exe" install ${CMAKE_BINARY_DIR}/packages.config WORKING_DIRECTORY ${PACKAGES_PATH})
 
     set (GLIB_PATH "${PACKAGES_PATH}/glib.2.36.2.11/build/native")
-    set (REDIS_PATH "${SC_MACHINE_THIRDPARTY_PATH}/libhiredis/")
+    set (REDIS_PATH "${SC_MACHINE_THIRDPARTY_PATH}/hiredis/")
     set (BOOST_PATH "${PACKAGES_PATH}/boost.${BOOST_VERSION}/lib/native")
 
     set (LIBCLANG_INCLUDE_DIRS "${SC_MACHINE_THIRDPARTY_PATH}/clang/include")

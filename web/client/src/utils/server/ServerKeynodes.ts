@@ -26,8 +26,11 @@ export class ServerKeynodes {
     const self = this;
     return new Promise<boolean>(function (resolve, reject) {
       const keynodesList = [
-        sNrelSystemIdentifier,
-      ];
+          {
+            idtf: sNrelSystemIdentifier,
+            type: ScType.Node
+          }
+        ];
 
       self._client.ResolveKeynodes(keynodesList).then(function (res: ResolveIdtfMap) {
 
@@ -35,7 +38,7 @@ export class ServerKeynodes {
 
         let resValue: boolean = true;
         for (let i = 0; i < keynodesList.length; ++i) {
-          const idtf: string = keynodesList[i];
+          const idtf: string = keynodesList[i].idtf;
           const addr: ScAddr = res[idtf];
           console.log(`Resolve keynode ${idtf} = ${addr.value}`);
 
